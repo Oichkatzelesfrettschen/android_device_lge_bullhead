@@ -179,10 +179,9 @@ BOARD_SEPOLICY_DIRS += \
 SELINUX_IGNORE_NEVERALLOWS := true
 
 # Sensors
-TARGET_USES_NANOHUB_SENSORHAL := true
-NANOHUB_SENSORHAL_LID_STATE_ENABLED := true
-NANOHUB_SENSORHAL_SENSORLIST := $(DEVICE_PATH)/sensorhal/sensorlist.cpp
-NANOHUB_SENSORHAL_DIRECT_REPORT_ENABLED := true
+$(call soong_config_set,nanohub_sensorhal,sensorlist_library,//device/lge/bullhead:libsensorlist_bullhead)
+$(call soong_config_set,nanohub_sensorhal,lid_state_enabled,true)
+$(call soong_config_set,nanohub_sensorhal,direct_report_enabled,true)
 TARGET_USES_CHINOOK_SENSORHUB := false
 
 # Shims

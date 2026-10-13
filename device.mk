@@ -364,8 +364,10 @@ PRODUCT_COPY_FILES += \
     prebuilts/vndk/v33/arm64/arch-arm64-armv8-a/shared/vndk-sp/libutils.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libutils-v33.so
 
 # Sensor & activity_recognition HAL
+PRODUCT_VENDOR_PROPERTIES += ro.hardware.sensors=nanohub
+
 PRODUCT_PACKAGES += \
-    sensors.bullhead \
+    sensors.nanohub \
     android.hardware.sensors@1.0-impl \
     android.hardware.contexthub@1.0-impl.nanohub \
     android.hardware.contexthub@1.0-service
@@ -392,10 +394,6 @@ PRODUCT_PACKAGES += \
     libshim_sensor \
     libprotobuf_shim \
     libc_mutexdestroy_shim
-
-PRODUCT_COPY_FILES += \
-    prebuilts/vndk/v29/arm/arch-arm-armv7-a-neon/shared/vndk-core/libprotobuf-cpp-lite.so:$(TARGET_COPY_OUT_VENDOR)/lib/libprotobuf-cpp-lite-v29.so \
-    prebuilts/vndk/v29/arm64/arch-arm64-armv8-a/shared/vndk-core/libprotobuf-cpp-lite.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libprotobuf-cpp-lite-v29.so
 
 # Soong
 PRODUCT_SOONG_NAMESPACES += \
