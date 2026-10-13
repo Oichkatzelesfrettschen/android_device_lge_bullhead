@@ -54,7 +54,7 @@ LOCAL_C_INCLUDES := \
         frameworks/av/camera/include \
         frameworks/native/include/media/hardware \
         frameworks/native/include/media/openmax \
-        hardware/qcom/media/msm8974/libstagefrighthw \
+        $(call project-path-for,qcom-media)/libstagefrighthw \
         system/media/camera/include \
         system/media/private/camera/include \
         $(LOCAL_PATH)/../mm-image-codec/qexif \
