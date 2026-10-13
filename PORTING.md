@@ -9,20 +9,46 @@ remain separate gates.
 
 ## Source ownership
 
-The private Android workbench owns the candidate Android-path overlay at
-`notes/bullhead-lineage22-local-manifest.xml` and its dependency audit at
-`notes/BULLHEAD_BUILD_SOURCE_OWNERSHIP.md`. Contributors need access to those
-inputs or an equivalent reviewed composition before selecting the product.
-The dependency list stays empty because inherited automatic requests select a
-different kernel/vendor generation, and Android 15 roomservice prefixes
-non-AOSP repository names with `LineageOS/`.
+The public [dependency manifest](manifests/lineage-22.2.xml) pins every
+additional device dependency selected for the candidate. After checking out
+this device tree at `device/lge/bullhead` in the Android source root, install
+the manifest before product configuration:
 
-The candidate overlay pins the device, kernel, vendor, timekeep, MSM8994-family
-CAF audio/display/media, and nanohub sources. The source-import XML uses separate
-research paths. Neither XML establishes a complete resolved Android build:
-GPS, Qualcomm path selection, legacy platform interfaces and partition packaging
-remain explicit admission gates. Preserve vendor binaries under their existing
-redistribution terms.
+```sh
+mkdir -p .repo/local_manifests
+cp device/lge/bullhead/manifests/lineage-22.2.xml .repo/local_manifests/bullhead.xml
+repo sync -c
+```
+
+The base manifest is
+`LineageOS/android@98c181d61f032a69c817835238cbb40fd049100e`. Use a dedicated
+source tree with a Repo-managed device project at the selected device commit,
+keep a single bullhead dependency overlay, and record every project revision
+with `repo manifest -r` after sync. An unmanaged Git clone requires its own
+project entry before a complete Repo lock can represent the device revision.
+The dependency overlay deliberately leaves the existing device checkout in
+place, so its own commit does not require a circular self-pin.
+
+The dependency list stays empty because inherited automatic requests select
+a different kernel/vendor generation, and Android 15 roomservice prefixes
+non-AOSP repository names with `LineageOS/`. XML supplies the exact repositories,
+revisions, replacements and generated links that roomservice cannot express.
+The private workbench supplies an equivalent candidate overlay with an explicit
+device pin, analysis receipts and the ranked roadmap; access to that workbench
+is optional for obtaining the public source dependencies.
+
+The legacy common source maps MSM8992 into the MSM8994 CAF family.
+`BOARD_USES_QCOM_HARDWARE=true` enables the real path dispatcher. The manifest
+preserves the base common project's generated links and adds the selected
+family's namespace and Make entry point. GPS occupies the CAF family directory
+because the Qualcomm guard skips legacy Make projects under `hardware/qcom`.
+The retained GPS flags select the donor's MSM8994 implementation and export
+`gps.msm8992`. `TARGET_USES_AOSP=true` remains the camera's VANILLA_HAL selector.
+
+These pins establish candidate source ownership. Legacy platform interfaces,
+warning cleanup in imported code, partition packaging, full module linking and
+runtime qualification remain admission gates. Preserve vendor binaries under
+their existing redistribution terms.
 
 ## Sensor module contract
 

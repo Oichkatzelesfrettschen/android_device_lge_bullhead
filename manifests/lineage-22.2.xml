@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='utf-8'?>
+<manifest>
+  <!-- Pinned source dependencies for the bullhead Android 15 candidate. Install after checking out device/lge/bullhead; see PORTING.md. Product compilation and device qualification remain separate gates. -->
+  <remote name="bullhead-source" fetch="https://github.com" />
+  <remove-project name="LineageOS/android_device_google_contexthub" path="device/google/contexthub" />
+  <project name="nexus5x-dev/kernel_lge_bullhead" path="kernel/lge/bullhead" remote="bullhead-source" revision="995f521bafa30055079fcb19eca37b360c037932">
+    <annotation name="role" value="kernel" />
+    <annotation name="evidence-level" value="source-only" />
+  </project>
+  <project name="nexus5x-dev/vendor_lge_bullhead" path="vendor/lge/bullhead" remote="bullhead-source" revision="ddf72b76c78c9a08a2ea10d4b631de729914290b">
+    <annotation name="role" value="vendor" />
+    <annotation name="evidence-level" value="source-only" />
+  </project>
+  <project name="LineageOS/android_hardware_sony_timekeep" path="hardware/sony/timekeep" remote="bullhead-source" revision="858c544d1ad1d4811a226372804acbf3011376ef">
+    <annotation name="role" value="tool" />
+    <annotation name="evidence-level" value="source-only" />
+  </project>
+  <project name="LineageOS-UL/android_hardware_qcom_display" path="hardware/qcom-caf/msm8994/display" remote="bullhead-source" revision="58166f36219e7e739ace20040cdb4a6ad2325841">
+    <annotation name="role" value="donor-reference" />
+    <annotation name="evidence-level" value="source-only" />
+  </project>
+  <project name="LineageOS-UL/android_hardware_qcom_media" path="hardware/qcom-caf/msm8994/media" remote="bullhead-source" revision="f21b36368dededbc42ebabb42a450564e029096b">
+    <annotation name="role" value="donor-reference" />
+    <annotation name="evidence-level" value="source-only" />
+  </project>
+  <project name="LineageOS-UL/android_hardware_qcom_audio" path="hardware/qcom-caf/msm8994/audio" remote="bullhead-source" revision="d6ad50eda8b7070227e5acc4d057c2ed715a4a70">
+    <annotation name="role" value="donor-reference" />
+    <annotation name="evidence-level" value="source-only" />
+  </project>
+  <project name="LineageOS/android_device_google_contexthub" path="device/google/contexthub" remote="bullhead-source" revision="60fe6008416c93c01b4224f6208e74d75e8fa3c7">
+    <annotation name="role" value="donor-reference" />
+    <annotation name="evidence-level" value="source-only" />
+  </project>
+  <remove-project name="LineageOS/android_hardware_qcom-caf_common" path="hardware/qcom-caf/common" />
+  <project name="Oichkatzelesfrettschen/android_hardware_qcom-caf_common" path="hardware/qcom-caf/common" remote="bullhead-source" revision="7dbb91aa3ae68250806e3232ec5632b6e661508d">
+    <annotation name="role" value="donor-reference" />
+    <annotation name="evidence-level" value="source-only" />
+    <linkfile src="os_pickup_aosp.mk" dest="hardware/qcom/Android.mk" />
+    <linkfile src="os_pickup_sepolicy_vndr.mk" dest="device/qcom/sepolicy_vndr/SEPolicy.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/msm8953/Android.bp" />
+    <linkfile src="os_pickup.bp" dest="hardware/qcom-caf/msm8996/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/msm8996/Android.mk" />
+    <linkfile src="os_pickup.bp" dest="hardware/qcom-caf/msm8998/Android.bp" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sdm660/Android.bp" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sdm845/Android.bp" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8150/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8150/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8250/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8250/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8350/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8350/Android.mk" />
+    <linkfile src="os_pickup_audio-ar.mk" dest="hardware/qcom-caf/sm8450/audio/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8450/Android.bp" />
+    <linkfile src="os_pickup_audio-ar.mk" dest="hardware/qcom-caf/sm8550/audio/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8550/Android.bp" />
+    <linkfile src="os_pickup_audio-ar.mk" dest="hardware/qcom-caf/sm8650/audio/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8650/Android.bp" />
+    <linkfile src="os_pickup_audio-ar.mk" dest="hardware/qcom-caf/sm8750/audio/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8750/Android.bp" />
+    <linkfile src="os_pickup.bp" dest="hardware/qcom-caf/msm8994/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/msm8994/Android.mk" />
+  </project>
+  <project name="LineageOS-UL/android_hardware_qcom_gps" path="hardware/qcom-caf/msm8994/gps" remote="bullhead-source" revision="bf8d5049a6318fad4791ebdbb13231ecfb373685">
+    <annotation name="role" value="donor-reference" />
+    <annotation name="evidence-level" value="source-only" />
+  </project>
+</manifest>
