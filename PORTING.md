@@ -61,6 +61,16 @@ namespace without adding a global duplicate. The host syntax check uses the
 actual Android headers and `-Wall -Wextra -Werror`; product linking, event rates,
 direct channels, flush completion and suspend/wake remain device gates.
 
+## Camera media-header ownership
+
+Camera Makefiles obtain legacy metadata and OMX include paths through
+`project-path-for,qcom-media`. The selected MSM8994 CAF media project owns
+`libstagefrighthw/QComOMXMetadata.h` and `mm-core/inc`; the inherited hardcoded
+`hardware/qcom/media/msm8974` directory falls outside the candidate manifest.
+The path dispatcher keeps camera metadata tied to the selected codec source.
+Source-path evaluation establishes header ownership; compilation, ARM32 binary
+layout, recording-buffer lifetime and camera/encoder lifecycle remain gates.
+
 ## ART and kernel contract
 
 `PRODUCT_ENABLE_UFFD_GC=false` selects ART artifacts compatible with the
