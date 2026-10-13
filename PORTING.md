@@ -50,6 +50,16 @@ warning cleanup in imported code, partition packaging, full module linking and
 runtime qualification remain admission gates. Preserve vendor binaries under
 their existing redistribution terms.
 
+## Product selection
+
+Android 15 lunch accepts a product, release and variant. The menu entries use
+`lineage_bullhead-bp1a-userdebug` and `lineage_bullhead-bp1a-eng`, matching the
+LineageOS 22.2 release selector and the platform's `bp1a` configuration. The
+inherited two-part entries fail lunch parsing before product evaluation.
+Run `source build/envsetup.sh` and `lunch lineage_bullhead-bp1a-userdebug` only
+after the complete source sync and lock. A valid selection does not establish
+a complete product graph or a compiled image.
+
 ## Sensor module contract
 
 Android 15 nanohub exports `sensors.nanohub` and consumes its sensor list through
