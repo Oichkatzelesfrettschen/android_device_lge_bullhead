@@ -164,7 +164,7 @@ BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 TARGET_USES_INTERACTION_BOOST := true
 
 # Recovery
-TARGET_RECOVERY_UI_LIB := librecovery_ui_nanohub
+TARGET_RECOVERY_UI_LIB := //device/lge/bullhead:librecovery_ui_nanohub
 BOARD_SUPPRESS_SECURE_ERASE := true
 TARGET_RECOVERY_FSTAB = $(DEVICE_PATH)/rootdir/etc/fstab.bullhead
 

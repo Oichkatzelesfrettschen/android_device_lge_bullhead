@@ -134,3 +134,23 @@ copy destinations and the build-system consumer of PRODUCT_ENABLE_UFFD_GC.
 Full product configuration, compilation, boot, Enforcing policy and feature
 lifecycle checks remain required. Hardware throughput and RAM improvements
 require matched measurements on the exact installed artifacts.
+
+## Recovery nanohub reset hook
+
+Android 15 recovery links `librecovery_ui_ext` through Soong. The nanohub
+factory-reset hook therefore defines `librecovery_ui_nanohub` as a Soong
+static library with recovery support and an explicit librecovery_ui header
+and link dependency. `TARGET_RECOVERY_UI_LIB` uses the fully qualified device
+namespace so the global recovery module resolves the selected implementation.
+The hook retains its erase_shared write and inherited reset-error policy;
+selecting the generic recovery UI would silently remove the sensor-hub reset.
+Source qualification and C++ syntax leave recovery linking, ramdisk contents
+and the attended factory-reset lifecycle as separate gates.
+
+The recovery dependency pins upstream LineageOS 22.2 plus commit
+`3a3fa21339c7eb6414939ead0fe36546ad406fcb`, which adds the missing override
+specifier to TextMenu::SetMenuHeight. The Android API 35 ARM64 syntax check
+passes with the real recovery headers, NDK r30 Clang 21 and
+`-std=c++17 -Wall -Wextra -Werror`; the original header fails with
+`-Winconsistent-missing-override`. The correction preserves method behavior
+and avoids weakening warning policy for the device module.

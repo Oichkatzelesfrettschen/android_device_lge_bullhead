@@ -69,4 +69,9 @@
     <annotation name="role" value="donor-reference" />
     <annotation name="evidence-level" value="source-only" />
   </project>
+  <remove-project name="LineageOS/android_bootable_recovery" path="bootable/recovery" />
+  <project name="Oichkatzelesfrettschen/android_bootable_recovery" path="bootable/recovery" remote="bullhead-source" revision="3a3fa21339c7eb6414939ead0fe36546ad406fcb">
+    <annotation name="role" value="donor-reference" />
+    <annotation name="evidence-level" value="source-only" />
+  </project>
 </manifest>
