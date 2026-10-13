@@ -2,6 +2,7 @@
 <manifest>
   <!-- Pinned source dependencies for the bullhead Android 15 candidate. Install after checking out device/lge/bullhead; see PORTING.md. Product compilation and device qualification remain separate gates. -->
   <remote name="bullhead-source" fetch="https://github.com" />
+  <remote name="bullhead-aosp" fetch="https://android.googlesource.com" />
   <remove-project name="LineageOS/android_device_google_contexthub" path="device/google/contexthub" />
   <project name="nexus5x-dev/kernel_lge_bullhead" path="kernel/lge/bullhead" remote="bullhead-source" revision="995f521bafa30055079fcb19eca37b360c037932">
     <annotation name="role" value="kernel" />
@@ -61,6 +62,10 @@
     <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/msm8994/Android.mk" />
   </project>
   <project name="LineageOS-UL/android_hardware_qcom_gps" path="hardware/qcom-caf/msm8994/gps" remote="bullhead-source" revision="bf8d5049a6318fad4791ebdbb13231ecfb373685">
+    <annotation name="role" value="donor-reference" />
+    <annotation name="evidence-level" value="source-only" />
+  </project>
+  <project name="platform/prebuilts/vndk/v29" path="prebuilts/vndk/v29" remote="bullhead-aosp" revision="2e659f04a7cde964415c82dd7507610769165408">
     <annotation name="role" value="donor-reference" />
     <annotation name="evidence-level" value="source-only" />
   </project>

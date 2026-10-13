@@ -50,6 +50,17 @@ warning cleanup in imported code, partition packaging, full module linking and
 runtime qualification remain admission gates. Preserve vendor binaries under
 their existing redistribution terms.
 
+## VNDK compatibility libraries
+
+`PRODUCT_EXTRA_VNDK_VERSIONS=29` requires the AOSP VNDK 29 snapshot at
+`platform/prebuilts/vndk/v29@2e659f04a7cde964415c82dd7507610769165408`.
+The dependency manifest adds that owner because the pinned Android 15 base
+contains VNDK 30 through 34. The snapshot supplies the requested ARM32 and
+ARM64 protobuf libraries and ARM64 libcutils compatibility library, with the
+existing copy destinations and version selection intact. ELF headers identify
+ARM and AArch64 respectively; source presence and ELF identity leave linker
+namespace, vendor symbol closure and runtime use as separate gates.
+
 ## Product selection
 
 Android 15 lunch accepts a product, release and variant. The menu entries use
