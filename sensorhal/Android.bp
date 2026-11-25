@@ -1,0 +1,17 @@
+// SPDX-License-Identifier: Apache-2.0
+
+cc_library_static {
+    name: "libsensorlist_bullhead",
+    vendor: true,
+    srcs: ["sensorlist.cpp"],
+    include_dirs: [
+        "device/google/contexthub/firmware/os/inc",
+        "device/google/contexthub/sensorhal",
+    ],
+    header_libs: ["libhardware_headers"],
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+    ],
+}

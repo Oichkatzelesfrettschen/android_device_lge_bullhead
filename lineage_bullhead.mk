@@ -23,6 +23,14 @@ PRODUCT_COPY_FILES := device/lge/bullhead/configs/apns-full-conf.xml:system/etc/
 # Inherit some common PixelExperience stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
+# The 3.10 kernel lacks userfaultfd and MREMAP_DONTUNMAP. Match prebuilt ART
+# images to the collector the kernel supports to avoid boot-image recompilation.
+PRODUCT_ENABLE_UFFD_GC := false
+
+# Adreno InitEsx overwrites the AArch64 x18 shadow-stack pointer during
+# eglGetDisplay. Keep driver initialization out of the shared Zygote process.
+PRODUCT_SYSTEM_PROPERTIES += ro.zygote.disable_gl_preload=1
+
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)

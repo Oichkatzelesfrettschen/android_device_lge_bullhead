@@ -18,5 +18,5 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/lineage_bullhead.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_bullhead-userdebug \
-    lineage_bullhead-eng
+    lineage_bullhead-bp1a-userdebug \
+    lineage_bullhead-bp1a-eng

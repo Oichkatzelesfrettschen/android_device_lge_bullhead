@@ -19,6 +19,8 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <errno.h>
+#include <stdio.h>
+#include <string.h>
 
 #include "recovery_ui/device.h"
 #include "recovery_ui/screen_ui.h"
@@ -27,7 +29,7 @@ class Nanohub_Device : public Device
 {
 public:
     Nanohub_Device(ScreenRecoveryUI* ui) : Device(ui) {}
-    bool PostWipeData();
+    bool PostWipeData() override;
 };
 
 bool Nanohub_Device::PostWipeData()

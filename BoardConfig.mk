@@ -41,6 +41,7 @@ TARGET_USES_AOSP := true
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := msm8992
+BOARD_USES_QCOM_HARDWARE := true
 TARGET_BOOTLOADER_BOARD_NAME := bullhead
 TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/board-info.txt
 
@@ -163,7 +164,7 @@ BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 TARGET_USES_INTERACTION_BOOST := true
 
 # Recovery
-TARGET_RECOVERY_UI_LIB := librecovery_ui_nanohub
+TARGET_RECOVERY_UI_LIB := //device/lge/bullhead:librecovery_ui_nanohub
 BOARD_SUPPRESS_SECURE_ERASE := true
 TARGET_RECOVERY_FSTAB = $(DEVICE_PATH)/rootdir/etc/fstab.bullhead
 
@@ -179,10 +180,9 @@ BOARD_SEPOLICY_DIRS += \
 SELINUX_IGNORE_NEVERALLOWS := true
 
 # Sensors
-TARGET_USES_NANOHUB_SENSORHAL := true
-NANOHUB_SENSORHAL_LID_STATE_ENABLED := true
-NANOHUB_SENSORHAL_SENSORLIST := $(DEVICE_PATH)/sensorhal/sensorlist.cpp
-NANOHUB_SENSORHAL_DIRECT_REPORT_ENABLED := true
+$(call soong_config_set,nanohub_sensorhal,sensorlist_library,//device/lge/bullhead:libsensorlist_bullhead)
+$(call soong_config_set,nanohub_sensorhal,lid_state_enabled,true)
+$(call soong_config_set,nanohub_sensorhal,direct_report_enabled,true)
 TARGET_USES_CHINOOK_SENSORHUB := false
 
 # Shims
