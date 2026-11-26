@@ -8,7 +8,7 @@
     <annotation name="role" value="kernel" />
     <annotation name="evidence-level" value="source-only" />
   </project>
-  <project name="nexus5x-dev/vendor_lge_bullhead" path="vendor/lge/bullhead" remote="bullhead-source" revision="ddf72b76c78c9a08a2ea10d4b631de729914290b">
+  <project name="Oichkatzelesfrettschen/vendor_lge_bullhead" path="vendor/lge/bullhead" remote="bullhead-source" revision="9512774ba198ac25f59e44b5813b0b2adb732093">
     <annotation name="role" value="vendor" />
     <annotation name="evidence-level" value="source-only" />
   </project>
